@@ -1,8 +1,8 @@
-test    = require '../setup'
-expect  = require('chai').expect
+test   = require '../setup'
+expect = chai.expect
 
-Model          = require 'models/model'
-NavigationView = require 'views/navigation_view'
+Model          = require '../../models/model'
+NavigationView = require '../../views/navigation_view'
 
 
 describe 'NavigationView', ->

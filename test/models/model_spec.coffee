@@ -1,7 +1,7 @@
-test    = require '../setup'
-expect  = require('chai').expect
+test   = require '../setup'
+expect = chai.expect
 
-Model = require 'models/model'
+Model = require '../../models/model'
 
 describe 'Models', ->
 

@@ -1,5 +1,3 @@
-hem = require 'hem-haml-coffee'
-
 process.env.TZ = 'EST'
 
 jsdom = require('jsdom').jsdom
@@ -10,12 +8,10 @@ global.window.confirm  = -> true
 global.jQuery          = require 'jqueryify2'
 global.jQuery.contains = -> true
 
-Backbone        = require 'backbone'
-datepicker      = require 'lib/jquery-ui-1.8.22.datepicker-only.min'
-MockHttpServer  = require('./lib/mock_server').MockHttpServer
+global.chai = require 'chai'
 
-require.extensions['.haml'] = (module, filename) ->
-  module._compile(hem.compilers.haml(filename))
+Backbone        = require 'backbone'
+MockHttpServer  = require('./lib/mock_server').MockHttpServer
 
 
 class TestState

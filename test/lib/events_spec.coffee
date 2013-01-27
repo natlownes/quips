@@ -1,9 +1,9 @@
 test   = require '../setup'
-expect = require('chai').expect
+expect = chai.expect
 
-Model = require 'models/model'
+Model  = require '../../models/model'
 
-events = require 'lib/events'
+events = require '../../lib/events'
 
 
 describe 'Events', ->

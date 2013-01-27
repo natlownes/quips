@@ -1,11 +1,11 @@
-test    = require '../setup'
-expect  = require('chai').expect
-$       = require 'jqueryify2'
+test   = require '../setup'
+expect = chai.expect
+$      = require 'jqueryify2'
 
-Collection  = require 'models/collection'
-Model       = require 'models/model'
+Collection  = require '../../models/collection'
+Model       = require '../../models/model'
 
-load = require('models/loader').load
+load = require('../../models/loader').load
 
 
 class MockModel extends Model

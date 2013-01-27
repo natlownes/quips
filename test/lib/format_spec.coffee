@@ -1,7 +1,7 @@
 test   = require '../setup'
-expect = require('chai').expect
+expect = chai.expect
 
-format = require 'lib/format'
+format = require '../../lib/format'
 
 
 describe 'Format library', ->

@@ -1,8 +1,8 @@
-test    = require '../setup'
-expect  = require('chai').expect
+test   = require '../setup'
+expect = chai.expect
 
-Model      = require 'models/model'
-DetailView = require 'views/detail_view'
+Model      = require '../../models/model'
+DetailView = require '../../views/detail_view'
 
 
 class TestModel extends Model

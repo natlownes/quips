@@ -1,12 +1,12 @@
-test    = require '../setup'
-expect  = require('chai').expect
+test   = require '../setup'
+expect = chai.expect
 
 Backbone  = require 'backbone'
 $         = require 'jqueryify2'
 _         = require 'underscore'
 
-View  = require 'views/view'
-Model = require 'models/model'
+View  = require '../../views/view'
+Model = require '../../models/model'
 
 
 describe 'View', ->

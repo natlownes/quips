@@ -1,7 +1,7 @@
-test    = require '../setup'
-expect  = require('chai').expect
+test   = require '../setup'
+expect = chai.expect
 
-NoticeView = require 'views/notice_view'
+NoticeView = require '../../views/notice_view'
 
 
 describe 'Notice View', ->

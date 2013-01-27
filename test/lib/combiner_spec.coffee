@@ -1,7 +1,7 @@
-test = require '../setup'
-expect = require('chai').expect
-combine = require('lib/combiner').combine
-$ = require 'jqueryify2'
+test    = require '../setup'
+expect  = chai.expect
+combine = require('../../lib/combiner').combine
+$       = require 'jqueryify2'
 
 describe 'Deferred combiner', ->
   beforeEach ->
