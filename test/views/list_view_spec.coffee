@@ -119,10 +119,10 @@ describe 'ListView', ->
 
   it 'should render a layout template', ->
     class MockListView extends lists.ListView
-      layout: ->
+      _layout: ->
         $('<ul class="list"></ul>')
 
-      template: (model) ->
+      _template: (model) ->
         $("<li>#{model.name}</li>")
 
       listEl: -> @$el.find('.list')
@@ -134,12 +134,12 @@ describe 'ListView', ->
     mlv = new MockListView(@collection).render()
 
     expect(mlv.html()).to.include 'some model name'
-    expect(mlv.$el.find('.list li')).to.have.length 1
+    expect(mlv.$el.find('ul.list li')).to.have.length 1
 
   it 'should setup all tables', ->
     class TableListView extends lists.ListView
-      template: require './test_list_template'
-      layout:   require './test_list_layout'
+      _template: 'test/views/test_list_template'
+      _layout:   'test/views/test_list_layout'
 
       listEl: -> @$el.find('.list')
 

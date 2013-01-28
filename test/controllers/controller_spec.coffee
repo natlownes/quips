@@ -1,9 +1,9 @@
 test       = require '../setup'
-expect     = require('chai').expect
+expect     = chai.expect
 $          = require 'jqueryify2'
 
-Controller = require 'controllers/controller'
-View       = require 'views/view'
+Controller = require '../../controllers/controller'
+View       = require '../../views/view'
 
 
 class EchoView extends View
@@ -30,7 +30,7 @@ class ClickView extends View
 
 
 class MyController extends Controller
-  layout: require './test_controller_layout'
+  _layout: 'test/controllers/test_controller_layout'
 
   views:
     '.slot1':   'viewOne'
@@ -57,7 +57,7 @@ class MyController extends Controller
 
 
 class ClickController extends Controller
-  layout: require './test_controller_layout'
+  _layout: 'test/controllers/test_controller_layout'
 
   views:
     '.slot2':   'view'
@@ -79,7 +79,7 @@ class ClickController extends Controller
     super
 
 class AaaView extends View
-  template: require './test_aaa_template'
+  _template: 'test/controllers/test_aaa_template'
 
   removed: false
 
@@ -88,7 +88,7 @@ class AaaView extends View
     super
 
 class ZzzView extends View
-  template: require './test_zzz_template'
+  _template: 'test/controllers/test_zzz_template'
 
   removed: false
 
@@ -98,7 +98,7 @@ class ZzzView extends View
 
 
 class WithNestedSubViews extends Controller
-  layout: require './test_sort_template'
+  _layout: 'test/controllers/test_sort_template'
 
   views:
     '.zzz': 'zzz'

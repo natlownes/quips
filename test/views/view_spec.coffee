@@ -32,7 +32,7 @@ describe 'View', ->
 
   it 'should be able to render a template', ->
     class TemplateView extends View
-      template: require './test_template'
+      _template: 'test/views/test_template'
 
       render: ->
         body = @template name: 'frank'
@@ -46,13 +46,13 @@ describe 'View', ->
     root = $('<div></div>')
 
     class ChildView extends View
-      template: -> "hello world"
+      _template: -> "hello world"
 
     class TemplateView extends View
       views:
         '.child-view': 'childView'
 
-      template: require './test_template'
+      _template: 'test/views/test_template'
 
       constructor: ->
         @childView = new ChildView().render()
@@ -65,7 +65,7 @@ describe 'View', ->
     root = $('<div></div>')
 
     class ChildView extends View
-      template: -> "hello world"
+      _template: -> "hello world"
 
     class TemplateView extends View
       views: ->
@@ -74,7 +74,7 @@ describe 'View', ->
         else
           {}
 
-      template: require './test_template'
+      _template: 'test/views/test_template'
 
       constructor: ->
         @childView = new ChildView().render()
@@ -125,7 +125,7 @@ describe 'View', ->
 
   it 'should populate element fields', ->
     class WithElements extends View
-      template: require './test_form'
+      _template: 'test/views/test_form'
       elements:
         'input[name=email]':    '$email'
         'input[name=password]': '$password'
@@ -140,7 +140,7 @@ describe 'View', ->
 
   it 'should be able to append to a specific element', ->
     class SomeView extends View
-      template: $('<div>')
+      _template: -> $('<div>')
 
     someView = new SomeView()
     domEl = $('<div>')
@@ -154,7 +154,7 @@ describe 'View', ->
 
   it 'should setup all tables', ->
     class TableView extends View
-      template: require './test_template'
+      _template: 'test/views/test_template'
 
     view = new TableView().render()
     expect(view.$el.find('.row')).to.have.length 4

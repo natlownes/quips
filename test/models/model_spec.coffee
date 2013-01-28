@@ -3,6 +3,7 @@ expect = chai.expect
 
 Model = require '../../models/model'
 
+
 describe 'Models', ->
 
   beforeEach ->

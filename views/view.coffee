@@ -71,6 +71,14 @@ class View extends Backbone.View
       else
         $.unblockUI()
 
+  template: ->
+    @_templateChoice()(arguments...)
+
+  _templateChoice: ->
+    return window.HAML[@_template] if @_template?.charAt?
+    return @_template if @_template?.call?
+    (-> '')
+
   render: ->
     if @model?
       @html @template(@model.json())

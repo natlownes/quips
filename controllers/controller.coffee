@@ -46,6 +46,13 @@ class Controller extends Backbone.Router
     @_child = new controllerType(initArgs...)
     @_child
 
+  layout: ->
+    @_layoutChoice()(arguments...)
+
+  _layoutChoice: ->
+    return window.HAML[@_layout] if @_layout?.charAt?
+    return @_layout if @_layout?.call?
+
   _createLocalEl: ->
     $('<div>').addClass(@constructor.name)
       .append(@layout())

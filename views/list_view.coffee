@@ -7,7 +7,7 @@ class RowView extends View
   events:
     'click': '_selected'
 
-  constructor: (@model, @template) ->
+  constructor: (@model, @_template) ->
     super(id: @model.id)
 
     @model.on 'change', @render, this
@@ -31,12 +31,10 @@ class RowView extends View
 class ListView extends View
   collection: null
 
-  layout: null
+  _layout: null
 
   listEl: ->
     @$el
-
-  template: ->
 
   constructor: (@items, @rowClass, opts) ->
     super
@@ -47,7 +45,7 @@ class ListView extends View
     @items.on 'reset',  @_reset,      this
     @items.on 'change', @render,      this
 
-    if @layout? then @append(@layout())
+    if @_layout? then @append(@_renderedLayout())
 
     if opts?.sort?
       @items.comparator = opts.sort
@@ -85,7 +83,7 @@ class ListView extends View
   _addItem: (item) ->
     if not @limit? or _.keys(@rows).length < @limit
       rowClass = @rowClass or RowView
-      row = new rowClass(item, @template).render()
+      row = new rowClass(item, @_template).render()
       @rows[item.id] = row
       @append(row, @listEl())
       row.on('select', ((model) -> @trigger 'select', model), this)
@@ -93,6 +91,10 @@ class ListView extends View
   _removeItem: (item) ->
     @rows[item.id]?.remove()
     delete @rows[item.id]
+
+  _renderedLayout: ->
+    return window.HAML[@_layout](arguments...) if @_layout?.charAt?
+    return @_layout(arguments...) if @_layout?.call?
 
   render: ->
     @_setupTables()

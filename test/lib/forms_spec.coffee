@@ -3,14 +3,13 @@ expect  = chai.expect
 $       = require 'jqueryify2'
 JSON    = require 'json2ify'
 
-
 Model = require '../../models/model'
 forms = require '../../lib/forms'
 
 
 class TestForm extends forms.FormView
-  template:       require './form_view_spec_template'
-  errorTemplate:  require './form_error'
+  _template:       'test/lib/form_view_spec_template'
+  _errorTemplate:  'test/lib/form_error'
 
   fields:
     name:             forms.stringField

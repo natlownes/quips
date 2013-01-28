@@ -8,7 +8,7 @@ DetailView = require '../../views/detail_view'
 class TestModel extends Model
 
 class TestDetailView extends DetailView
-  template: require '../templates/detail_view'
+  _template: 'test/templates/detail_view'
 
 
 describe 'Test Detail View', ->

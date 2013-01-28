@@ -10,7 +10,8 @@ View = require '../views/view'
 
 class FormView extends View
   errorTemplate: ->
-    throw('Must override errorTemplate')
+    throw new Error('Must define _errorTemplate') if !@_errorTemplate?
+    window.HAML[@_errorTemplate](arguments...)
 
   constructor: (@model, opts) ->
     @deferred = new Deferred()

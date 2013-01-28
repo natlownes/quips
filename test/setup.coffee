@@ -7,11 +7,12 @@ global.window   or= global.document.createWindow()
 global.window.confirm  = -> true
 global.jQuery          = require 'jqueryify2'
 global.jQuery.contains = -> true
-
 global.chai = require 'chai'
+
 
 Backbone        = require 'backbone'
 MockHttpServer  = require('./lib/mock_server').MockHttpServer
+
 
 
 class TestState
@@ -29,7 +30,6 @@ module.exports =
 
   destroy: ->
     @server.stop()
-    document.write ''
 
   when: (method, url, respond) ->
     @patterns.push [method, url, respond]
@@ -40,7 +40,6 @@ module.exports =
   _setup: ->
     Backbone.$ = jQuery
 
-    chai = require 'chai'
     ext  = require './lib/chai_extensions'
     chai.use(ext)
 
