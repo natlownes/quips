@@ -3,7 +3,8 @@ mocha = @./node_modules/.bin/mocha \
 
 HEM = @./node_modules/.bin/hem
 
-FILES?=`find ./test -type f -name '*.coffee'`
+TEST_DEPS=./test/setup.coffee ./tmp/templates
+FILES?=`find ./test -type f -name '*_spec.coffee'`
 HOST?=http://localhost
 OUTPUT?=host.html
 
@@ -15,12 +16,18 @@ else
 MOCHA=$(mocha)
 endif
 
+FILES="${TEST_DEPS} ${FILES}"
+
 export NODE_PATH=./
+
+compile:
+	@grunt shell:haml_compile_test
 
 xunit:
 	$(MOCHA) -R xunit $(FILES)
 
-test:
+test: compile
+	@echo $(FILES)
 	$(MOCHA) -R spec $(FILES)
 
 debug:

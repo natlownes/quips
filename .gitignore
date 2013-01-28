@@ -1,2 +1,8 @@
 node_modules
 tags
+pkg
+package
+components
+.vagrant
+tmp
+npm-debug.log

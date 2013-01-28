@@ -1,6 +1,7 @@
 {
   "name": "quips",
   "version": "0.0.41",
+  "dist": "pkg",
   "dependencies": {
     "coffee-script": "1.3.3",
     "jqueryify2": "0.0.1",
@@ -8,14 +9,23 @@
     "underscore": "1.4.3",
     "backbone": "0.9.10",
     "haml-coffee": "1.4.1",
-    "hem":  "0.2.7",
-    "hem-haml-coffee": "0.0.3",
-    "jsdom": "0.2.15",
+    "jsdom": "~0.2.15",
     "mocha": "1.3.2",
     "chai": "1.2.0",
-    "sinon": "1.5.2"
+    "fs-extra": "0.1.3",
+    "grunt": "=0.4.0rc4",
+    "jquery-browserify": ""
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt-contrib-coffee": "~0.3.2",
+    "grunt-coffee-server": "~0.1.1",
+    "grunt-contrib-copy": "~0.3.2",
+    "grunt-contrib-clean": "~0.4.0a",
+    "grunt-mocha": "git://github.com/kmiyashiro/grunt-mocha.git",
+    "grunt-browserify": "git://github.com/pix/grunt-browserify.git",
+    "grunt-shell": "git://github.com/sindresorhus/grunt-shell.git",
+    "grunt-contrib-watch": "~0.1.4"
+  },
   "optionalDependencies": {},
   "engines": {
     "node": "*"
