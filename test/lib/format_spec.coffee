@@ -16,6 +16,10 @@ describe 'Format library', ->
     date = '1890-05-23T12:00:00Z'
     expect(format.date(date)).to.equal '5/23/1890'
 
+  it 'should format a datetime', ->
+    date = '1890-05-23T01:01:00Z'
+    expect(format.dateTime(date)).to.equal '5/23/1890 1:01 AM'
+
   it 'should return an empty string for invalid date', ->
     expect(format.date('JUNK!!!')).to.equal ''
     expect(format.date()).to.equal ''

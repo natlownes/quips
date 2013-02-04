@@ -1,9 +1,8 @@
-require './date'
-
+moment = require 'moment'
 
 date = (dateString) ->
   date = new Date(dateString)
-  formattedDate = date.toString('M/d/yyyy')
+  formattedDate = moment.utc(date).format('M/DD/YYYY')
   if formattedDate.indexOf('NaN') is -1
     formattedDate
   else
@@ -11,7 +10,7 @@ date = (dateString) ->
 
 dateTime = (dateTimeString) ->
   date = new Date(dateTimeString)
-  formattedDate = date.toString('M/d/yyyy h:mm tt')
+  formattedDate = moment.utc(date).format('M/DD/YYYY h:mm A')
   if formattedDate.indexOf('NaN') is -1
     formattedDate
   else

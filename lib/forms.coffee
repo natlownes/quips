@@ -1,4 +1,4 @@
-require './date'
+moment = require 'moment'
 
 _        = require 'underscore'
 jQuery   = require 'jqueryify2'
@@ -169,7 +169,8 @@ dateField =
 
   set: (el, value) ->
     date = if value? then new Date(value) else Date.now()
-    el.val(date.toString('MM/dd/yyyy'))
+    dateAsString = moment(date).format('MM/DD/YYYY')
+    el.val(dateAsString)
 
 
 dateTimeField =
@@ -189,9 +190,12 @@ dateTimeField =
     if _.isNaN(date.getTime())
       throw new TypeError('Invalid date string')
 
-    el.filter('.date').val(date.toString('MM/dd/yyyy'))
+    dateAsString = moment(date).format('MM/DD/YYYY')
 
-    timeEl.val(date.toString('h:00 tt'))
+    el.filter('.date').val(dateAsString)
+
+    timeAsString = moment(date).format('H:00 A')
+    timeEl.val(timeAsString)
 
   populate: (select) ->
     return if select.children().length

@@ -1,9 +1,8 @@
-require '../../lib/date'
+test    = require '../setup'
+expect  = chai.expect
+$       = require 'jqueryify2'
+JSON    = require 'json2ify'
 
-test   = require '../setup'
-expect = chai.expect
-$      = require 'jqueryify2'
-JSON   = require 'json2ify'
 
 Model = require '../../models/model'
 forms = require '../../lib/forms'
