@@ -29,7 +29,6 @@ module.exports = (grunt) ->
     'controllers/*.coffee',
     'views/*.coffee',
     'lib/*.coffee',
-    'lib/**/*.js',
     'quips.coffee'
   ]
 
