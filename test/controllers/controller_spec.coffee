@@ -29,6 +29,8 @@ class ClickView extends View
     this
 
 
+class ControllerWithoutLayout extends Controller
+
 class MyController extends Controller
   _layout: 'test/controllers/test_controller_layout'
 
@@ -243,3 +245,32 @@ describe 'Controller', ->
       expect(child.destroyed).to.be.false
       @controller.destroy()
       expect(child.destroyed).to.be.true
+
+  describe 'without a layout set', ->
+    beforeEach ->
+      @controller = new ControllerWithoutLayout
+
+    afterEach ->
+      @controller.destroy()
+
+    it 'should initialize', ->
+      init = ->
+        new ControllerWithoutLayout
+      expect(init).not.to.throw()
+
+    describe '_localEl element', ->
+      it 'should have a _localEl set', ->
+        expect(@controller._localEl).to.exist
+
+      it 'should have the constructor name set as class name', ->
+        expect(@controller._localEl).to.have.class('ControllerWithoutLayout')
+
+    it 'should be able to activate', ->
+      activate = @controller.activate
+
+      expect(activate).not.to.throw()
+
+
+    it 'should append an empty string as the layout', ->
+      expect(@controller._localEl.html()).to.have.length 0
+

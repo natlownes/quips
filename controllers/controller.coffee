@@ -18,13 +18,13 @@ class Controller extends Backbone.Router
     @_setupViews()
     @_setupEventHandling()
 
-  activate: ->
+  activate: =>
     @_pageEl.children().detach()
     @_pageEl.append(@_localEl)
     @_cleanupChildView()
     this
 
-  destroy: ->
+  destroy: =>
     @_cleanupChildView()
 
     for _, viewName of @views
@@ -52,13 +52,14 @@ class Controller extends Backbone.Router
   _layoutChoice: ->
     return window.HAML[@_layout] if @_layout?.charAt?
     return @_layout if @_layout?.call?
+    -> ''
 
   _createLocalEl: ->
     $('<div>').addClass(@constructor.name)
       .append(@layout())
 
   _render: ->
-    if @layout then @$el.empty().append(@layout())
+    if @_layout then @$el.empty().append(@layout())
     @_setupViews()
 
   _setupViews: ->
