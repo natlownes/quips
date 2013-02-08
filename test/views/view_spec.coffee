@@ -172,3 +172,18 @@ describe 'View', ->
       @view.render()
 
       expect(@view.html()).to.be.empty
+
+  describe 'with a non-existent path', ->
+    beforeEach ->
+      class ViewWithLyingTemplate extends View
+        _template: 'right/here/no/big/deal'
+
+      @view = new ViewWithLyingTemplate
+
+    it 'should throw error for non-existent template', ->
+      errorMsg =
+        ("couldn't find template at right/here/no/big/deal")
+      expect(@view.render).to.throw(Error, errorMsg)
+
+
+

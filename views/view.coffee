@@ -75,11 +75,21 @@ class View extends Backbone.View
     @_templateChoice()(arguments...)
 
   _templateChoice: ->
-    return window.HAML[@_template] if @_template?.charAt?
-    return @_template if @_template?.call?
+    if @_template?.charAt?
+      # _template is set as a path
+      if not window.HAML[@_template]?
+        throw new Error(
+          "couldn't find template at #{@_template}"
+        )
+      return window.HAML[@_template]
+
+    if @_template?.call?
+      # _template is a function
+      return @_template
+    # didn't find either, empty string
     (-> '')
 
-  render: ->
+  render: =>
     if @model?
       @html @template(@model.json())
     else
