@@ -161,3 +161,14 @@ describe 'View', ->
     expect(view.$el.find('.row.striped')).to.have.length 2
     expect($(view.$el.find('.row')[1])).to.have.class 'striped'
     expect($(view.$el.find('.row')[3])).to.have.class 'striped'
+
+  describe 'with no _template set', ->
+    beforeEach ->
+      class ViewWithNoTemplate extends View
+
+      @view = new ViewWithNoTemplate
+
+    it 'should render nothing', ->
+      @view.render()
+
+      expect(@view.html()).to.be.empty
