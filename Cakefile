@@ -26,44 +26,39 @@ task 'haml:compile:test', 'compile haml templates', (options, cb) ->
 task 'tags', 'ctags', (options, cb) ->
   sh 'ctags -R .'
 
-mochaCommand = ->
-  "./node_modules/.bin/mocha
-    -c
-    --compilers coffee:coffee-script "
+mochaExec = ->
+  "#{localBin}mocha"
 
 option '-f', '--files [PATHS]', 'only run specific files'
 option '-w', '--watch', 'watch'
 task 'test', 'mocha tests', (options, cb) ->
-  testDependencies = "./test/setup.coffee ./tmp/templates.js"
-  files            = options.files || "./test/**/*_spec.coffee"
-  reporter         = if options.watch
-    'dot'
-  else
-    'spec'
+  testDependencies = [
+    "./test/setup.coffee"
+    "./tmp/templates"
+  ]
 
-  optionsFlag = if options.watch
-    '-w '
-  else
-    ' '
+  files            = options.files || "./test"
 
-  cmd = "#{mochaCommand()}
-    -u bdd
-    -R #{reporter}
-    #{optionsFlag}
-    #{testDependencies} #{files}"
+  cmd = "node"
+  mochaArgs = [
+    mochaExec(),
+    '-c'
+    '--compilers'
+    'coffee:coffee-script'
+    '--recursive'
+    '-u'
+    'bdd'
+  ]
+
+  mochaArgs.push('-w') if options.watch?
+
+  mochaArgs.push(filePath) for filePath in testDependencies
+  mochaArgs.push(files)
 
   sh "cake haml:compile:test", ->
-    sh "#{cmd}"
+    mocha = spawn cmd, mochaArgs
+    mocha.stdout.on 'data', (data) ->
+      print data.toString()
+    mocha.stderr.on 'data', (data) ->
+      console.log data.toString()
 
-task 'test:watch', 'watch tests', (options, cb) ->
-  testDependencies = "./test/setup.coffee ./tmp/templates.js"
-  files            = options.files || "./test/**/*_spec.coffee"
-
-  cmd = "#{mochaCommand()}
-    -u bdd
-    -w
-    -R dot
-    #{testDependencies} #{files}"
-  print cmd
-
-  sh "#{cmd}"
