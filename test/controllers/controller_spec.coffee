@@ -2,8 +2,10 @@ test       = require '../setup'
 expect     = chai.expect
 $          = require 'jqueryify2'
 
-Controller = require '../../controllers/controller'
-View       = require '../../views/view'
+Controller     = require '../../controllers/controller'
+FormController = require '../../controllers/form_controller'
+View           = require '../../views/view'
+FormView       = require('../../lib/forms').FormView
 
 
 class EchoView extends View
@@ -110,6 +112,8 @@ class WithNestedSubViews extends Controller
     @aaa = new AaaView().render()
     @zzz = new ZzzView().render()
     super
+
+class TestFormController extends FormController
 
 
 describe 'Controller', ->
@@ -273,4 +277,27 @@ describe 'Controller', ->
 
     it 'should append an empty string as the layout', ->
       expect(@controller._localEl.html()).to.have.length 0
+
+
+describe 'FormController', ->
+
+  beforeEach ->
+    test.create()
+    @root       = $('<div/>')
+    formView    = new FormView({})
+    @controller = new FormController(
+      formView,
+      el: @root
+    )
+
+  afterEach ->
+    test.destroy()
+    @controller.destroy()
+
+  describe 'with no layout specified', ->
+    it 'should use the default div.form-view', ->
+      @controller.activate()
+
+      expect(@controller._pageEl).to.have.element 'div.form-view'
+
 

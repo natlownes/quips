@@ -5,7 +5,7 @@ Controller        = require './controller'
 
 
 class FormController extends Controller
-  layout: _.template('<div class="form-view"></div>')
+  _layout: _.template('<div class="form-view"></div>')
 
   views:
     '.form-view': 'formView'

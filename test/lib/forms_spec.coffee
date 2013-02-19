@@ -41,6 +41,7 @@ describe 'Form View', ->
     @form.remove()
     test.destroy()
 
+
   it 'should populate a form', ->
     nameField = @form.$el.find('input[name=name]')
     ageField = @form.$el.find('input[name=age]')
