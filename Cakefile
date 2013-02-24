@@ -21,7 +21,7 @@ task 'clean:test', 'clean tmp dir', (options, cb) ->
 
 task 'haml:compile:test', 'compile haml templates', (options, cb) ->
   sh 'cake clean:test', ->
-    sh "haml-coffee -i test -o tmp/templates.js"
+    sh "#{localBin}haml-coffee -i test -o tmp/templates.js"
 
 task 'tags', 'ctags', (options, cb) ->
   sh 'ctags -R .'
