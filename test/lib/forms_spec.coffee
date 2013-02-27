@@ -86,6 +86,35 @@ describe 'Form View', ->
       update = @form._getUpdate()
       expect(update.birthday).to.equal '1999-04-22T13:45:55Z'
 
+  describe '#edit', ->
+
+    it 'should set the model variable', ->
+      otherModel = new Model
+      @form.edit(otherModel)
+
+      expect(@form.model).to.equal otherModel
+
+    it 'should return a new deferred', ->
+      originalDeferred = @form.deferred
+      otherModel       = new Model
+      @form.edit(otherModel)
+
+      expect(@form.deferred).not.to.equal originalDeferred
+
+    it 'should return a new deferred in the pending state', ->
+      originalDeferred = @form.deferred
+      otherModel       = new Model
+      @form.edit(otherModel)
+
+      expect(@form.deferred.state()).to.equal 'pending'
+
+    it 'should render the attributes of the model we are now editing', ->
+      otherModel = new Model(name: '44 Horses in a Bucket')
+      @form.edit(otherModel)
+
+      expect(@form.$el.find('[name="name"]').val()).to.
+        equal '44 Horses in a Bucket'
+
   describe 'when saving a form', ->
 
     it 'should post the update to the server', (done) ->

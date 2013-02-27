@@ -26,6 +26,11 @@ class FormView extends View
     if opts?.controlsClass?
       @controlsClass = opts.controlsClass
 
+  edit: (outcome) ->
+    @model    = outcome
+    @render()
+    @deferred = new Deferred()
+
   save: (e) ->
     e?.preventDefault()
     local = new Deferred
