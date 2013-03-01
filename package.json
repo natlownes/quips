@@ -1,7 +1,6 @@
 {
   "name": "quips",
-  "dist": "pkg",
-  "version": "0.0.44",
+  "version": "0.0.45",
   "dependencies": {
     "coffee-script": "1.3.3",
     "jqueryify2": "0.0.1",
