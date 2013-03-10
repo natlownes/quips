@@ -97,7 +97,6 @@ class ListView extends View
     return @_layout(arguments...) if @_layout?.call?
 
   render: ->
-    @_setupTables()
     @populate()
     this
 

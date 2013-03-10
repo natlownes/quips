@@ -43,5 +43,6 @@ module.exports =
     zipCode:    require('./lib/format').zipCode
 
   # Test
-  ChaiExtensions: require './test/lib/chai_extensions'
-  MockHttpServer: require('./test/lib/mock_server').MockHttpServer
+  ChaiExtensions:  require './test/lib/chai_extensions'
+  MockHttpServer:  require('./test/lib/mock_server').MockHttpServer
+  Combiner:        require './lib/combiner'
