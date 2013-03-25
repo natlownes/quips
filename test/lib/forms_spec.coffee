@@ -271,6 +271,16 @@ describe 'Form View', ->
 
           done()
 
+  describe '#errorTemplate', ->
+    it "should throw error if bad template path set", ->
+      @form.__errorTemplate = "bad/path"
+      expect(@form.errorTemplate()).to.throw(/bad\/path is not a valid template/)
+
+    it "should throw error if no template path set", ->
+      @form.__errorTemplate = null
+      expect(@form.errorTemplate()).to.throw(/'Must define _errorTemplate'/)
+
+
 describe 'Date Field', ->
   beforeEach ->
     test.create()
