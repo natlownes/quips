@@ -15,7 +15,7 @@
     "grunt-contrib-copy": "~0.3.2",
     "grunt-contrib-clean": "~0.4.0a",
     "grunt-mocha": "git://github.com/kmiyashiro/grunt-mocha.git",
-    "grunt-browserify": "git://github.com/pix/grunt-browserify.git",
+    "grunt-browserify": "git://github.com/jmreidy/grunt-browserify.git",
     "grunt-shell": "git://github.com/sindresorhus/grunt-shell.git",
     "grunt-contrib-watch": "~0.1.4",
     "grunt-simple-mocha": "git://github.com/yaymukund/grunt-simple-mocha.git",
