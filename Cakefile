@@ -1,6 +1,9 @@
+process.env.NODE_PATH = ".:#{process.env.NODE_PATH}"
+
 fs                  = require 'fs'
 {spawn, exec}       = require 'child_process'
 {log, error, print} = require 'util'
+
 localBin = "./node_modules/.bin/"
 
 sh = (cmd, cb) ->
@@ -10,11 +13,6 @@ sh = (cmd, cb) ->
     throw err if err
     process.exit proc.exitCode if proc.exitCode
     cb? proc
-
-task 'dev:server', 'run frontend and mock backend', ->
-  server = sh 'coffee dev_server.coffee'
-  # TODO
-  frontend = sh ''
 
 task 'clean:test', 'clean tmp dir', (options, cb) ->
   sh 'rm -rf tmp/*'
@@ -60,5 +58,7 @@ task 'test', 'mocha tests', (options, cb) ->
     mocha.stdout.on 'data', (data) ->
       print data.toString()
     mocha.stderr.on 'data', (data) ->
-      console.log data.toString()
+      print data.toString()
+    mocha.on 'exit', (data) ->
+      process.exit(data)
 
