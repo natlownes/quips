@@ -40,6 +40,6 @@
   },
   "main": "./quips",
   "scripts": {
-    "test": "make test"
+    "test": "cake test"
   }
 }
