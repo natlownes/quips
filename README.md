@@ -3,7 +3,7 @@ a leak-plugging layer on top of backbone.js
 
 a basic example can be found here: http://github.com/vistarmedia/quips-example
 
-[![Build Status](https://api.travis-ci.org/vistarmedia/quips.png?branch=master)](http://travis-ci.org/vistarmedia/quips?branch=master)
+[![Build Status](https://travis-ci.org/natlownes/quips.png?branch=develop)](https://travis-ci.org/natlownes/quips)
 
 ###Installation
 ```bash
