@@ -40,6 +40,6 @@
   },
   "main": "./quips",
   "scripts": {
-    "test": "NODE_PATH=`pwd` cake test"
+    "test": "cake test"
   }
 }
