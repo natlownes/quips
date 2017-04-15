@@ -11,6 +11,7 @@ View = require '../views/view'
 class FormView extends View
   errorTemplate: ->
     throw new Error('Must define _errorTemplate') if !@_errorTemplate?
+    throw new Error("'#{@_errorTemplate}' is not a valid template") unless window.HAML[@_errorTemplate]?
     window.HAML[@_errorTemplate](arguments...)
 
   constructor: (@model, opts) ->
